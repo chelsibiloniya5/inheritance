@@ -1,39 +1,27 @@
 #include <iostream>
+#include <iostream>
 
-class Rectangle {
-    protected:
-        double length;
-        double width;
+class CarDealership {
     public:
-        //setters to set the length and width
-        void set_length(double len) {
-            length = len;
+        std::string model {};
+        std::string manufacturer {};
+        int yearManufactured {};
+        CarDealership(std::string mod, std::string manuf, int yr) {
+            model = mod;
+            manufacturer = manuf;
+            yearManufactured = yr;
         }
-        void set_width(double wid) {
-            width = wid;
-        }
-        double area(double length, double width) {
-            return length * width;
+        void getDetails(CarDealership car) {
+            std::cout << "Model of car: " << car.model << "\nManufacturer: " << car.manufacturer 
+            << "\nYear of Manufacturing: " << car.yearManufactured << '\n';
         }
 };
 
-class Cuboid : public Rectangle{
-    private:
-        double height;
-    public:
-        void set_height(double hgt) {
-            height = hgt;
-        }
-        double volume() {
-            return area(length, width) * height;
-        }
-};
+
+
 
 int main() {
-    Cuboid c1;
-    c1.set_length(10);
-    c1.set_width(15);
-    c1.set_height(10);
-    std::cout << "Volume: " << c1.volume() << '\n';
+    CarDealership nissanMicra("Nissan Micra", "Nissan", 2013);
+    nissanMicra.getDetails(nissanMicra);
     return 0;
 }
